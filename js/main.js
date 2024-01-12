@@ -18,7 +18,7 @@ let TickSize = 0.015 * height;
 let tooltip = d3.select("#tooltip");
 
 // 定义图表边距
-let margin = { top: TitleSize, right: TickSize, bottom: (TickSize+CaptionSize*1.1), left: (TickSize+CaptionSize*1.1)};
+let margin = { top: TitleSize, right: TickSize, bottom: (TickSize+CaptionSize*1.25), left: (TickSize+CaptionSize*1.5)};
 let svgWidth = width_figure / 2;
 let svgHeight = height_figure;
 let plotWidth = svgWidth - margin.left - margin.right;
@@ -123,7 +123,7 @@ function drawChartLeft(filteredData) {
 
     svgLeft.append("text")
            .attr("transform", "rotate(-90)")
-           .attr("y", -CaptionSize)
+           .attr("y", -TickSize*2.5)
            .attr("x", -plotHeight / 2)
            .style("font-size", CaptionSize + "px")
            .attr("fill", "#000")
@@ -238,7 +238,7 @@ function drawChartRight(filteredData) {
 
     svgRight.append("text")
            .attr("transform", "rotate(-90)")
-           .attr("y", -CaptionSize)
+           .attr("y", -TickSize*2.5)
            .attr("x", -plotHeight / 2)
            .style("font-size", CaptionSize + "px")
            .attr("fill", "#000")
