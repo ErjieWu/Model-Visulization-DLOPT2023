@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Khand-Regular';
+    src: url('./font/Khand-Regular.ttf');
+}
+@font-face {
+    font-family: 'KAITI';
+    src: url(./font/KAITI.ttf);
+}
+@font-face {
+    font-family: 'PingFangSC-Regular';
+    src: url(./font/PingFang-SC-Regular.ttf);
+}
+
+@media only screen and (min-width: 1080px) {
+    html {
+        font-size: 15px !important;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    html {
+        font-size: 25px !important;
+    }
+}
+
+
+
+
+html,body {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    overflow: hidden;
+    background-color: #e3f7ff;
+}
+
+#container {
+    width: 100%; 
+    height: 100%;  
+    background-color: rgba(240, 240, 240, 0.9);
+    overflow: hidden;
+}
+
+.title {
+    font-size: 1.5rem;
+    text-anchor: middle;
+}
+
+.axis_label {
+    font-size: 1rem;
+    text-anchor: middle;
+}
+
+.point {
+    fill: #1f77b4;
+}
+
+#tooltip{
+    position: absolute;           
+    text-align: center;
+    background-color: rgba(250, 250, 250, 1);
+    border: 1px solid rgb(200,200,200);
+    border-radius:5px;
+    font-size:0.8rem;
+    width: 15rem;;
+    padding:4px;
+    color:black;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0.8;
+}
+
+.domain {
+    stroke: rgb(80,80,80);
+    stroke-linecap: round;
+}
+
+.tick line {
+    stroke: rgb(80,80,80);
+    stroke-linecap: round;
+}
+
+#title-container {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 10%; 
+    text-align: center; 
+    font-size: calc(0.06 * 100vh); /* 根据页面高度设置字号 */
+    line-height: 10vh; /* 行高与容器高度相同，确保文本垂直居中 */
+    background-color: #f2f2f2; /* 背景颜色，根据需要调整 */
+    color: #333; /* 文本颜色，根据需要调整 */
+}
+
+#slider1-container {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+    width: 6%;
+    height: 6%;
+}
+
+#slider2-container {
+    position: absolute;    
+    left: 2%;
+    top: 45%;
+    width: 6%;            
+    height: 6%;         
+}
+
+#slider1-container label, #slider2-container label {
+    display: block; 
+    text-align: center; 
+    font-size: calc(0.015 * 100vh); 
+}
+
+#slider1-container span, #slider2-container span {
+    display: block; 
+    text-align: center; 
+    font-size: calc(0.015 * 100vh); 
+}
+
+#chart-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    position: absolute;
+}
+
+#chart-left, #chart-right {
+    width: 50%;
+    height: 100%; 
+}
+
