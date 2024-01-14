@@ -62,20 +62,32 @@ function draw_fig1(data, learningRates, batchSizes) {
     // 为滑动条添加事件监听器
     d3.select("#slider1").on("input", function() {
         let sliderValue = d3.select("#slider1").property("value");
+        let choiceValue = d3.select("#choice1").property("value");
         let learningRate = learningRates[sliderValue]; // 获取当前的 learning_rate
         d3.select("#slider1-value").text(learningRate);
-        updateCharts(data);
+        new_data = data.filter(d => d.task_id == choiceValue);
+        updateCharts(new_data);
     });
 
     d3.select("#slider2").on("input", function() {
         let sliderValue = d3.select("#slider2").property("value");
+        let choiceValue = d3.select("#choice1").property("value");
         let batchSize = batchSizes[sliderValue]; // 获取当前的 batch_size
         d3.select("#slider2-value").text(batchSize);
-        updateCharts(data);
+        new_data = data.filter(d => d.task_id == choiceValue);
+        updateCharts(new_data);
+    });
+
+    d3.select("#choice1").on("input", function() {
+        let choiceValue = d3.select("#choice1").property("value");
+        new_data = data.filter(d => d.task_id == choiceValue);
+        updateCharts(new_data);
     });
 
     // 初始图表绘制
-    updateCharts(data);
+    let choiceValue = d3.select("#choice1").property("value");
+    new_data = data.filter(d => d.task_id == choiceValue);
+    updateCharts(new_data);
 }
 
 function drawChartLeft(filteredData) {
@@ -91,11 +103,11 @@ function drawChartLeft(filteredData) {
 
     // 定义比例尺
     let xScale = d3.scaleLinear()
-                   .domain(d3.extent(filteredData, d => d.epoch))
+                   .domain(d3.extent(filteredData, d => +d.epoch))
                    .range([0, plotWidth]);
 
     let yScale = d3.scaleLinear()
-                   .domain([0, d3.max(filteredData, d => d.loss)])
+                   .domain(d3.extent(filteredData, d => d.loss))
                    .range([plotHeight, 0]);
 
     // 定义坐标轴
@@ -206,11 +218,11 @@ function drawChartRight(filteredData) {
 
     // 定义比例尺
     let xScale = d3.scaleLinear()
-                   .domain(d3.extent(filteredData, d => d.epoch))
+                   .domain(d3.extent(filteredData, d => +d.epoch))
                    .range([0, plotWidth]);
 
     let yScale = d3.scaleLinear()
-                   .domain([0, d3.max(filteredData, d => d.accuracy)])
+                   .domain(d3.extent(filteredData, d => d.accuracy))
                    .range([plotHeight, 0]);
 
     // 定义坐标轴
