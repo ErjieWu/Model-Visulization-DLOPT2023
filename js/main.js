@@ -107,7 +107,7 @@ function drawChartLeft(filteredData) {
                    .range([0, plotWidth]);
 
     let yScale = d3.scaleLinear()
-                   .domain(d3.extent(filteredData, d => d.loss))
+                   .domain(d3.extent(filteredData, d => +d.loss))
                    .range([plotHeight, 0]);
 
     // 定义坐标轴
@@ -222,7 +222,7 @@ function drawChartRight(filteredData) {
                    .range([0, plotWidth]);
 
     let yScale = d3.scaleLinear()
-                   .domain(d3.extent(filteredData, d => d.accuracy))
+                   .domain(d3.extent(filteredData, d => +d.accuracy))
                    .range([plotHeight, 0]);
 
     // 定义坐标轴
